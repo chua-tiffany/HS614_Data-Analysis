@@ -20,3 +20,18 @@ library(psych)
 library(corrplot)
 library("ISLR")
 ```
+
+##HW #2:
+For this HW do more exploratory data analysis (EDA) like adding some graphs, correlation btw variables. After that apply all the classification models we have learned so far. 
+
+```{r Dataset}
+# https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+(original)
+url = "https://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/breast-cancer-wisconsin.data"
+names = c('id', 'clump_thickness', 'uniform_cell_size', 'uniform_cell_shape',
+       'marginal_adhesion', 'single_epithelial_size', 'bare_nuclei',
+       'bland_chromatin', 'normal_nucleoli', 'mitoses', 'class')
+df = read.csv(url, col.names=names)
+
+df
+```
+
