@@ -85,3 +85,51 @@ C <- c(TRUE, FALSE, TRUE)
 data.frame(A, B, C)
 ```
 
+5. Print top rows (head) of the flights dataset and answer the following questions:
+```{r 5. head}
+head(flights)
+```
+
+  * a. How many rows and columns are in the dataset?
+```{r 5a}
+nrow(flights)
+ncol(flights)
+```
+  
+  * b. How many years do we have data for in the dataset?
+```{r 5b}
+unique(flights$year)
+# 1 year: 2013
+```
+
+  * c. What are the number of flights in each month?
+```{r 5c}
+table(flights$month)
+```
+  
+  * d. Does it contain any missing values?
+```{r 5d}
+sum(is.na(flights))
+nrow(flights)
+
+#There are 46595 rows with missing values
+```
+  
+  * e. Select the rows that are at the last day of the months (30 or 31). Print top 6 rows (head).
+```{r 5e}
+head(flights %>% filter(day == 30 | day == 31))
+```
+  
+  * f. What is the average of "dep_time"?
+```{r 5f}
+summary(flights)
+# Mean = 1349
+```
+  
+  * g. Select only columns of "year", "month", "day", "carrier", "origin", "dest". Print the head.
+```{r 5g}
+head(flights[ ,
+         c("year", "month", "day", "carrier", "origin", "dest")])
+```
+  
+  
