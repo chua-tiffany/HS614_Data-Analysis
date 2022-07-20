@@ -625,3 +625,64 @@ confusionMatrix(diab.test[ , 9],
                 y_pred)
 ```
 
+## Clustering
+
+### K-Means Clustering
+```{r}
+diab.train2 <- diab.train[1:8]
+head(diab.train2)
+```
+
+```{r WCSS2}
+wcss2 = vector ()
+  for (i in 1:10){ #range of number of clusters, max limit can be any reasonable number
+    model = kmeans(diab.train2, i)
+    wcss2[i] = sum(model$withinss)
+  }
+```
+
+#### K-Means Find K
+```{r K-means Find K}
+wcss = vector()
+  for (i in 1:10){
+    print(i)
+    model = kmeans(diab.train2, i)
+    wcss[i] = sum(model$withinss)
+  }
+
+plot(1:10,
+     wcss,
+     type = "b",
+     main = paste("The Elbow Method"),
+     xlab = "Number of Clusters",
+     ylab = "WCSS")
+```
+
+```{r K-Means}
+kmeans = kmeans(x = diab.train2,
+                centers = 2)
+head(kmeans$cluster, 10)
+head(kmeans$centers, 10)
+
+wcss = kmeans$withinss
+wcss
+
+sum(kmeans$withinss)
+head(kmeans$tot.withinss, 10)
+```
+
+#### K-Means Clusters
+```{r K-Means ClusPlot}
+y_kmeans = kmeans$cluster
+
+clusplot(diab.train2,
+         y_kmeans,
+         lines = 0,
+         shade = FALSE,
+         color = TRUE,
+         labels = 2,
+         plotchar = FALSE,
+         span = TRUE,
+         main = "Clusters of Patients")
+```
+
