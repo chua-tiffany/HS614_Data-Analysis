@@ -1,0 +1,22 @@
+---
+title: "HS614 HW#2"
+author: "Tiffany Chua"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r Libraries}
+library(Amelia)
+library(ggplot2)
+library("GGally")
+library(caTools)
+library(caret)
+library(class)
+library("e1071")
+library(psych)
+library(corrplot)
+library("ISLR")
+```
