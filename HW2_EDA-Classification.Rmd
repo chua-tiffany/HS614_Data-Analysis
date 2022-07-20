@@ -166,3 +166,30 @@ ggplot(df,
                    fill = factor(class)))
 ```
 
+##Model
+```{r}
+#Train and test split
+#Train 2 models:
+  #1. KNN
+  #2. Logistic Regression
+  #3. SVM
+```
+
+```{r Sample Split}
+# train test split
+set.seed(123)
+split <- sample.split(df$class,
+                      SplitRatio = 0.80)
+df.train <- subset(df,
+                   split == TRUE)
+df.test <- subset(subset(df,
+                         split == FALSE))
+
+nrow(df.test)
+nrow(df.train)
+```
+
+```{r}
+str(df.train)
+```
+
