@@ -66,3 +66,13 @@ head(diab)
 str(diab)
 ```
 
+## Variable Definitions
+1. Pregnancy - Frequency of pregnancy
+2. Glucose - Concentration of plasma glucose (mg/dL)
+3. BP - Diastolic blood pressure (mmHg)
+4. Skin - Tricep skinfold thickness (mm)
+5. Insulin - Two-hour serum insulin (mu U/ml)
+6. BMI - Body mass index (kg/m2)
+7. Pedigree - A pedigree function for diabetes
+8. Age - Age (log(years))
+
