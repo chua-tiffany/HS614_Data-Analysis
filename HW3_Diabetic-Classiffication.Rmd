@@ -182,3 +182,44 @@ ggplot(diab1,
   geom_bar()
 ```
 
+### Histograms, grouped by Outcome
+```{r Histogram}
+# Grouped
+# p <- data %>%
+#   ggplot( aes(x=value, fill=type)) +
+#     geom_histogram( color="#e9ecef", alpha=0.6, position = 'identity') +
+#     scale_fill_manual(values=c("#69b3a2", "#404080")) +
+#     theme_ipsum() +
+#     labs(fill="")
+
+Glucose_hist <- diab1 %>%
+  ggplot(aes(x = Glucose,
+             fill = Outcome)) +
+  geom_histogram(binwidth = 5)
+Glucose_hist
+
+BP_hist <- diab1 %>%
+  ggplot(aes(x = BloodPressure,
+             fill = Outcome)) +
+  geom_histogram(binwidth = 5)
+BP_hist
+
+BMI_hist <- diab1 %>%
+  ggplot(aes(x = BMI,
+             fill = Outcome)) +
+  geom_histogram(binwidth = 2)
+BMI_hist
+
+Ped_hist <- diab1 %>%
+  ggplot(aes(x = DiabetesPedigreeFunction,
+             fill = Outcome)) +
+  geom_histogram(binwidth = 0.075)
+Ped_hist
+
+Age_hist <- diab1 %>%
+  ggplot(aes(x = Age,
+             fill = Outcome)) +
+  geom_histogram(binwidth = 2)
+Age_hist
+```
+
