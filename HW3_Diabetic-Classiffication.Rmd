@@ -10,7 +10,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r Working Directory}
 getwd()
-setwd("/Users/tiffa.chua/Desktop/HS614")
 ```
 
 # HS614: Homework #3
