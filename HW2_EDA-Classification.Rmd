@@ -266,3 +266,40 @@ confusionMatrix(df.test1$class,
 #Kappa: 0.9359
 ```
 
+##Log Models
+```{r Log Model 1}
+log.model <- glm(formula=class ~ . ,
+                 family=binomial,
+                 data = df.train)
+
+summary(log.model)
+#Significant features:
+# clump_thickness   ***
+# marginal_adhesion .
+# bare_nuclei       ***
+# bland_chromatin   **
+# normal_nucleoli   *
+
+#AIC: 89.506
+```
+
+```{r Log Model 2}
+log.model2 <- glm(formula=class ~ clump_thickness + marginal_adhesion + bare_nuclei + bland_chromatin + normal_nucleoli,
+                 family=binomial,
+                 data = df.train)
+
+summary(log.model2)
+
+#New AIC: 88.222 --> Better
+```
+
+```{r Log Model 3}
+log.model3 <- glm(formula=class ~ clump_thickness +  bare_nuclei + bland_chromatin + normal_nucleoli,
+                 family=binomial,
+                 data = df.train)
+
+summary(log.model3)
+
+#New AIC: 93.302 --> Not as good as model or model2
+```
+
