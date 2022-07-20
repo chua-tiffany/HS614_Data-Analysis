@@ -111,3 +111,28 @@ sum(diab$Age == 0)
 #The following columns returned values of 0 Glucose, BloodPressure, SkinThickness, Insulin, and BMI; It is likely that missing/NA variables for these columns were replaced with 0, as 0 is a highly unlikely and unrealistic observation for these features
 ```
 
+**Strange Values**
+The following columns returned values of 0: Glucose, BloodPressure, SkinThickness, Insulin, and BMI. It is likely that missing/NA variables for these columns were replaced with 0, as 0 is a highly unlikely and unrealistic observation for these features.
+
+```{r Change Strange Values to NA}
+#What to do with the strange values?
+diab1 <- diab
+
+#Turn strange (0) values into NA
+diab1$Glucose[diab1$Glucose == 0] = NA
+diab1$BloodPressure[diab1$BloodPressure == 0] = NA
+diab1$SkinThickness[diab1$SkinThickness == 0] = NA
+diab1$Insulin[diab1$Insulin == 0] = NA
+diab1$BMI[diab1$BMI == 0] = NA
+
+sum(is.na(diab1))
+missmap(diab1)
+
+#I will use mean imputation on the NA variables in the Predictive Models section (after Train/Test Split)
+```
+What to do with the strange variables?
+1. Turn strange (0) values into NA.
+2. I will use mean imputation on the NA variables in the Predicive Models section (after Train/Test Split).
+
+*** 
+
