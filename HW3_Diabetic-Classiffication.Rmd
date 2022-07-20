@@ -448,3 +448,76 @@ table(diab.test$Outcome,
       results.class$pred)
 ```
 
+## K-Nearest Neighbor
+```{r}
+head(diab.train)
+head(diab.test)
+
+str(diab.train)
+str(diab.test)
+
+sum(is.na(diab.train))
+sum(is.na(diab.test))
+```
+
+### KNN Fitting
+```{r KNN Fitting 1}
+#Fitting K-NN to the Training set and Predicting the Test set results
+vec = c()
+k_vec = c()
+
+y_pred = knn(train = diab.train[ , -9],
+             test = diab.test[ , -9],
+             cl = diab.train[ , 9],
+             k = 10)
+
+head(y_pred)
+```
+
+```{r KNN Fitting 2}
+#Fitting K-NN to the Training set and Predicting the Test set results
+vec = c()
+k_vec = c()
+
+for (k in 1:50){
+y_pred = knn(train = diab.train[ , -9],
+             test = diab.test[ , -9],
+             cl = diab.train[ , 9],
+             k = k)
+
+error = mean(y_pred != diab.test$Outcome) #measure of accuracy
+k_vec = c(k_vec, k)
+vec = c(vec, error)
+}
+
+head(vec)
+```
+
+```{r KNN Error}
+df.error = data.frame(k_vec, vec)
+head(df.error)
+```
+
+### Elbow Method
+```{r Elbow Method}
+ggplot(df.error,
+       aes(k_vec, vec)) +
+  geom_line()
+```
+
+### KNN Confusion Matrix
+```{r KNN Confusion Matrix}
+y_pred = knn(train = diab.train[, -9],
+             test = diab.test[, -9],
+             cl = diab.train[, 9],
+             k = 9)
+
+# Making the Confusion Matrix
+cm = table(diab.test[, 9], y_pred)
+cm
+
+confusionMatrix(diab.test[ , 9],
+                y_pred)
+```
+Kappa: 0.4268
+
