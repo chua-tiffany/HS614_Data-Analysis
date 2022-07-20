@@ -29,3 +29,34 @@ Column definitions of this dataset are given in table 1 of this paper: https://w
 
 ***
 
+```{r Libraries}
+library(Amelia)
+library(ggplot2)
+library(GGally)
+library(caTools)
+library(caret)
+library(class)
+library(e1071)
+library(psych)
+library(corrplot)
+library(ISLR)
+library(cluster)
+library(datasets)
+library(pastecs)
+library(psych)
+library(corrplot)
+library(stats)
+library(Hmisc)
+library(mice)
+library(VIM)
+library(dplyr)
+library(hrbrthemes)
+library(tidyverse)
+library(factoextra)
+library(pROC)
+library(rpart)
+library(rpart.plot)
+library(randomForest)
+library(animation)
+```
+
