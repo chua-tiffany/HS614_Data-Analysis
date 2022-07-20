@@ -112,3 +112,57 @@ ggpairs(df)
 table(df$class)
 ```
 
+###Plots
+```{r Factor Bar}
+ggplot(df,
+       aes(class)) + 
+  geom_bar(aes(fill = factor(class)))
+```
+
+```{r Boxplots}
+ggplot(df,
+       aes(class, clump_thickness)) + 
+  geom_boxplot(aes(group = class,
+                   fill = factor(class)))
+
+ggplot(df,
+       aes(class, uniform_cell_size)) + 
+  geom_boxplot(aes(group = class,
+                   fill = factor(class)))
+
+ggplot(df,
+       aes(class, uniform_cell_shape)) + 
+  geom_boxplot(aes(group = class,
+                   fill = factor(class)))
+
+ggplot(df,
+       aes(class, marginal_adhesion)) + 
+  geom_boxplot(aes(group = class,
+                   fill = factor(class)))
+
+ggplot(df,
+       aes(class, single_epithelial_size)) + 
+  geom_boxplot(aes(group = class,
+                   fill = factor(class)))
+
+ggplot(df,
+       aes(class, bare_nuclei)) + 
+  geom_boxplot(aes(group = class,
+                   fill = factor(class)))
+
+ggplot(df,
+       aes(class, bland_chromatin)) + 
+  geom_boxplot(aes(group = class,
+                   fill = factor(class)))
+
+ggplot(df,
+       aes(class, normal_nucleoli)) + 
+  geom_boxplot(aes(group = class,
+                   fill = factor(class)))
+
+ggplot(df,
+       aes(class, mitoses)) + 
+  geom_boxplot(aes(group = class,
+                   fill = factor(class)))
+```
+
