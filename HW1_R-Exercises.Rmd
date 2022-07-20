@@ -1,0 +1,20 @@
+---
+title: "HS614 HW#1"
+author: "Tiffany Chua"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# HS614 Homework #1
+```{r Working Directory}
+getwd()
+```
+
+```{r Libraries}
+library("nycflights13")
+library("dplyr")
+library("tidyverse")
+```
