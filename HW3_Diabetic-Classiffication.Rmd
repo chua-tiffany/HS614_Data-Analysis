@@ -365,3 +365,64 @@ sum(is.na(diab.test))
 head(diab.test)
 ```
 
+## Logistic Regression
+
+### Logistic Regression Models
+```{r Log Model 1}
+logModel1 <- glm(formula = Outcome ~ . , 
+                 family = binomial,
+                 data = diab.train)
+summary(logModel1)
+
+#Based on logModel1, the significant values are as follows:
+# ***: Glucose
+# *: BMI 
+# .: Insulin
+
+#AIC: 284.17
+```
+Based on logModel1, the significant values are as follows:
+* ***: Glucose
+* *: BMI 
+* .: Insulin
+
+AIC: 284.17
+
+```{r Log Model 2}
+logModel2 <- glm(formula = Outcome ~ Glucose + BMI + Insulin, 
+                 family = binomial,
+                 data = diab.train)
+summary(logModel2)
+
+#Based on logModel2, the significant values are as follows:
+# ***: Glucose, BMI
+# .: Insulin
+
+#AIC: 289.49
+#Because this AIC is higher  than for logModel1 (289.49 > 284.17), we can assume that logModel1 is better than logModel2
+```
+Based on logModel2, the significant values are as follows:
+* ***: Glucose, BMI
+* .: Insulin
+
+AIC: 289.49
+Because this AIC is higher  than for logModel1 (289.49 > 284.17), we can assume that logModel1 is better than logModel2.
+
+```{r Log Model 3}
+logModel3 <- glm(formula = Outcome ~ Glucose + BMI, 
+                 family = binomial,
+                 data = diab.train)
+summary(logModel3)
+
+#Based on logModel3, the significant values are as follows:
+# ***: Glucose, BMI
+
+#AIC: 590.81
+#Because this AIC is higher  than for logModel1 and logModel2 (590.81 > 289.49 > 284.17), we can assume that this model is not as good as logModel1 or logModel2
+```
+Based on logModel3, the significant values are as follows:
+* ***: Glucose, BMI
+
+AIC: 590.81
+Because this AIC is higher  than for logModel1 and logModel2 (590.81 > 289.49 > 284.17), we can assume that this model is not as good as logModel1 or logModel2.
+
