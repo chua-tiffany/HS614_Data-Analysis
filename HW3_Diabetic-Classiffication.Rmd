@@ -76,3 +76,10 @@ str(diab)
 7. Pedigree - A pedigree function for diabetes
 8. Age - Age (log(years))
 
+```{r Outcome Factor}
+diab$Outcome = factor(diab$Outcome)
+str(diab)
+
+table(diab$Outcome)
+```
+
