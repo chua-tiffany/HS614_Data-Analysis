@@ -60,3 +60,9 @@ library(randomForest)
 library(animation)
 ```
 
+```{r Read in Dataset}
+diab <- read.csv("./diabetes.csv")
+head(diab)
+str(diab)
+```
+
