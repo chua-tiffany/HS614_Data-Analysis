@@ -76,3 +76,12 @@ get_even_odd(-3)
 get_even_odd(6)
 ```
 
+4. Recreate the following dataframe (see assignment) by creating vectors and using the data.frame function
+```{r 4. dataframe}
+A <- c("a", "b", "c")
+B <- c(1, 2, 3)
+C <- c(TRUE, FALSE, TRUE)
+
+data.frame(A, B, C)
+```
+
