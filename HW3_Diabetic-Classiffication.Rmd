@@ -223,3 +223,81 @@ Age_hist <- diab1 %>%
 Age_hist
 ```
 
+### Scatter Plots, grouped by Outcome
+```{r Scatter Plots}
+#Highest Correlating Variables:
+# BMI & SkinThickness = 0.65
+# Insulin & Glucose = 0.58
+# Pregnancies & Age = 0.54
+# BloodPressure & Age = 0.33
+# BMI & BloodPressure = 0.29
+
+# BMI & SkinThickness = 0.65
+BMI_Skin <- ggplot(data = diab1,
+                   aes(x = BMI,
+                       y = SkinThickness,
+                       color = Outcome),
+                   na.rm = TRUE) +
+  geom_point(size = 0.5) +
+  geom_smooth(method = lm) +
+  labs(title = "BMI vs. Skin Thickness")
+BMI_Skin
+
+# Insulin & Glucose = 0.58
+Insu_Glucose <- ggplot(data = diab1,
+                       aes(x = Insulin,
+                           y = Glucose,
+                           color = Outcome),
+                       na.rm = TRUE) +
+  geom_point(size = 0.5) +
+  geom_smooth(method = lm) +
+  labs(title = "Insulin vs. Glucose")
+Insu_Glucose
+
+# Pregnancies & Age = 0.54
+Age_Preg <- ggplot(data = diab1,
+                   aes(x = Age,
+                       y = Pregnancies,
+                       color = Outcome),
+                   na.rm = TRUE) +
+  geom_point(size = 0.5) +
+  geom_smooth(method = lm) +
+  labs(title = "Age vs. Pregnancies")
+Age_Preg
+
+# BloodPressure & Age = 0.33
+Age_BP <- ggplot(data = diab1,
+                    aes(x = Age,
+                        y = BloodPressure,
+                        color = Outcome),
+                    na.rm = TRUE) +
+  geom_point(size = 0.5) +
+  geom_smooth(method = lm) +
+  labs(title = "Age vs. Blood Pressure")
+Age_BP
+
+# Glucose & Age = 0.32
+Age_Glucose <- ggplot(data = diab1,
+                      aes(x = Age,
+                          y = Glucose,
+                          color = Outcome),
+                      na.rm = TRUE) +
+  geom_point(size = 0.5) +
+  geom_smooth(method = lm) +
+  labs(title = "Age vs. Glucose")
+Age_Glucose
+
+# BloodPressure & BMI = 0.29
+BMI_BP <- ggplot(data = diab1,
+                 aes(x = BMI,
+                     y = BloodPressure,
+                     color = Outcome),
+                 na.rm = TRUE) +
+  geom_point(size = 0.5) +
+  geom_smooth(method = lm) +
+  labs(title = "BMI vs. Blood Pressure")
+BMI_BP
+```
+
+***
+
