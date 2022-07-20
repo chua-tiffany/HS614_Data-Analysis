@@ -521,3 +521,68 @@ confusionMatrix(diab.test[ , 9],
 ```
 Kappa: 0.4268
 
+## Decision Tree & Random Forest
+
+```{r}
+head(diab.train)
+head(diab.test)
+
+str(diab.train)
+str(diab.test)
+
+sum(is.na(diab.train))
+sum(is.na(diab.test))
+```
+
+### Decision Tree
+#### Tree
+```{r Tree}
+tree = rpart(formula = Outcome ~ .,
+             method = "class",
+             data = diab.train)
+```
+
+#### Tree Prediction
+```{r Tree Pred}
+#Predicting the Test Set Results
+y_pred = predict(tree,
+                 newdata = diab.test)
+
+head(y_pred)
+```
+
+```{r Tree Pred Class}
+y_pred_class = ifelse(y_pred[, "0"] >= 0.5,
+                      0, 1)
+```
+
+#### Tree Confusion Matrix
+```{r Tree Confusion Matrix}
+# Making the Confusion Matrix
+cm = table(diab.test$Outcome,
+           y_pred_class)
+
+cm
+```
+
+#### Tree ROC
+```{r Tree ROC}
+result.roc = roc(diab.test$Outcome,
+                 y_pred[ ,"0"])
+
+result.roc
+plot(result.roc)
+```
+
+#### Decision Trees
+```{r Decision Trees}
+plot(tree,
+     uniform=TRUE,
+     main="Diabetes Outcome")
+text(tree,
+     use.n=TRUE,
+     all=TRUE)
+
+prp(tree)
+```
+
