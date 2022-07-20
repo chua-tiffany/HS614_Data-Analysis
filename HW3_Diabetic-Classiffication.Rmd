@@ -301,3 +301,28 @@ BMI_BP
 
 ***
 
+# Predictive Models
+## Train & Test Split
+```{r Sample Split}
+set.seed(123)
+split <- sample.split(diab1$Outcome,
+                      SplitRatio = 0.8)
+diab.train <- subset(diab1,
+                     split == TRUE)
+diab.test <- subset(subset(diab1,
+                           split == FALSE))
+
+nrow(diab.test)
+nrow(diab.train)
+```
+
+```{r Train Head/Str}
+head(diab.train)
+str(diab.train)
+```
+
+```{r Rows & Columns}
+nrow(diab.train)
+ncol(diab.train)
+```
+
