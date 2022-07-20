@@ -303,3 +303,72 @@ summary(log.model3)
 #New AIC: 93.302 --> Not as good as model or model2
 ```
 
+##SVM Models
+```{r SVM 1}
+# Fitting SVM to the Training set
+classifier = svm(formula = class ~ .,
+                 data = df.train,
+                 kernel = 'radial')
+
+# Predicting the Test set results
+y_pred = predict(classifier,
+                 newdata = df.test[-10])
+
+# Making the Confusion Matrix
+cm = table(df.test$class, y_pred)
+summary(classifier)
+```
+
+```{r SVM 1 Confusion Matrix}
+confusionMatrix(df.test$class,
+                y_pred)
+
+summary(classifier)
+```
+
+```{r}
+str(df.train)
+```
+
+```{r Tuning}
+#Tune hyper parameters
+tune.results <- tune(svm, 
+                     train.x = df.train[, -10],
+                     train.y = df.train[, 10], 
+                     kernel = 'radial',
+                     ranges = list(cost = 10^(-1:2),
+                                 gamma = c(0.25,.5,1,2)))
+
+# list(cost=10^(-1:2),
+#      gamma=c(0.25,.5,1,2))
+
+summary(tune.results)
+#Cross validation is for TRAIN data
+
+#best parameters:
+#cost = 10, gamma = 1
+```
+
+```{r SVM 2}
+classifier = svm(formula = class ~ .,
+                 data = df.train,
+                 type = 'C-classification',
+                 kernel = 'radial',
+                 cost=10,
+                 gamma=1)
+
+# Predicting the Test set results
+y_pred = predict(classifier,
+                 newdata = df.test[-10])
+
+# Making the Confusion Matrix
+cm = table(df.test[, 10],
+           y_pred)
+cm
+```
+
+```{r SVM 2 Confusion Matrix}
+confusionMatrix(df.test[, 10],
+                y_pred)
+summary(classifier)
+```
