@@ -170,3 +170,15 @@ Highest Correlating Variables:
 * BloodPressure & Age = 0.33
 * BMI & BloodPressure = 0.29
 
+## Plots
+```{r ggPairs}
+ggpairs(diab1)
+```
+
+### Outcome Barplot
+```{r Bar}
+ggplot(diab1,
+       aes(Outcome)) +
+  geom_bar()
+```
+
