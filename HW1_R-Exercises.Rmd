@@ -18,3 +18,23 @@ library("nycflights13")
 library("dplyr")
 library("tidyverse")
 ```
+
+## R Exercise
+
+1. Create a function  called "count_func" that accepts two arguments, a string and a vector of string. It returns the count of the number of occurrences of the string in the input vector.
+```{r 1. count_func}
+count_func <- function(string, v){
+  count = 0
+  for (x in v) {
+    if (x == string) {
+      count = count + 1
+    }
+  }
+  return (count)
+}
+
+#Example:
+x = c("ML", "ML", "data", "data2")
+count_func("ML", x)
+```
+
