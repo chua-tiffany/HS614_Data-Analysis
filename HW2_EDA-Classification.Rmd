@@ -193,3 +193,76 @@ nrow(df.train)
 str(df.train)
 ```
 
+##K-NN Model
+```{r Feature Scaling}
+#Feature Scaling
+normParam <- preProcess(df.train,
+                        method = c("center",
+                                   "scale"))
+df.train1 <- predict(normParam,
+                        df.train)
+df.test1 <- predict(normParam, df.test)
+
+head(df.train1)
+head(df.test1)
+```
+
+```{r KNN}
+# Fitting K-NN to the Training set and Predicting the Test set results
+y_pred = knn(train = df.train1,
+             test = df.test1,
+             df.train1$class,
+             k = 9)
+
+head(y_pred)
+
+misclass.error = mean(df.test1$class != y_pred)
+misclass.error
+
+#Misclass error with optimal K value of 9 = 0.02189781
+```
+
+```{r Choosing a K}
+#Choosing a K-value
+y_pred <- NULL
+error.rate <- NULL
+
+for (i in 1:20){
+  set.seed(123)
+  y_pred <- knn(train = df.train1,
+                test = df.test1,
+                df.train1$class,
+                k = i)
+  error.rate[i] <- mean(df.test1$class != y_pred)
+}
+
+error.rate
+
+#Visualize K - Elbow Method
+
+k.values <- 1:20
+error.df <- data.frame(error.rate,
+                       k.values)
+
+ggplot(error.df,
+       aes(k.values,
+           error.rate)) +
+  geom_point() +
+  geom_line(lty = "dotted",
+            color = "red")
+
+#Optimal K value: 9
+```
+
+```{r KNN Confusion Matrix}
+cm = table(df.test1$class,
+           y_pred)
+cm
+
+confusionMatrix(df.test1$class,
+                y_pred)
+
+#Accuracy: 0.9708
+#Kappa: 0.9359
+```
+
