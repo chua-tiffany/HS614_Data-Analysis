@@ -426,3 +426,25 @@ Based on logModel3, the significant values are as follows:
 AIC: 590.81
 Because this AIC is higher  than for logModel1 and logModel2 (590.81 > 289.49 > 284.17), we can assume that this model is not as good as logModel1 or logModel2.
 
+### Logistic Regression Prediction
+```{r Log Predict}
+Outcome.predictions <- predict(logModel1,
+                               diab.test,
+                               type = "response")
+
+log.results <- cbind(Outcome.predictions,
+                     diab.test$Outcome)
+
+results.class <- ifelse(log.results > 0.5, 1,0) 
+colnames(results.class) <- c("pred", "real")
+results.class <- as.data.frame(results.class)
+
+head(results.class)
+```
+
+### Logistic Regression Confusion Matrix
+```{r Log Confusion Matrix}
+table(diab.test$Outcome,
+      results.class$pred)
+```
+
