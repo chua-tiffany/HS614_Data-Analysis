@@ -686,3 +686,48 @@ clusplot(diab.train2,
          main = "Clusters of Patients")
 ```
 
+### Hierarchical Clustering
+```{r Dendrogram}
+hc = hclust(d = dist(diab.train2,
+                     method = "euclidean"),
+            method = "ward.D") #Variance within each cluster
+
+plot(hc,
+     main = "Dendrogram",
+     xlab = "Patients",
+     ylab = "Euclidean Distances")
+```
+
+```{r HC Cut Tree}
+y_hc = cutree(hc, 2)
+
+head(y_hc)
+```
+
+#### Hierarchical Clustering Clusters
+```{r HC Clusplot}
+clusplot(diab.train2,
+         y_hc,
+         lines = 0,
+         shade = FALSE,
+         color = TRUE,
+         labels= 2,
+         plotchar = FALSE,
+         span = TRUE,
+         main = 'Clusters of Patients')
+```
+
+#### Hierarchical Clustering Find K
+```{r HC Find K}
+fviz_nbclust(diab.train2,
+             hcut,
+             method = "silhouette") +
+  labs(subtitle = "Silhouette method")
+
+fviz_nbclust(diab.train2,
+             hcut,
+             nstart = 25, 
+             method = "gap_stat", 
+             nboot = 50) +
+  labs(subtitle = "Gap statistic method")
+```
