@@ -145,3 +145,28 @@ stat.desc(diab1)
 summary(diab1)
 ```
 
+### Correlations
+```{r Correlations}
+diab_num <- diab1[1:8]
+
+M <- cor(diab_num,
+         method = "pearson")
+M
+corrplot(M,
+         method = "square")
+cor.plot(diab_num)
+
+#Highest Correlating Variables:
+# BMI & SkinThickness = 0.65
+# Insulin & Glucose = 0.58
+# Pregnancies & Age = 0.54
+# BloodPressure & Age = 0.33
+# BMI & BloodPressure = 0.29
+```
+Highest Correlating Variables:
+* BMI & SkinThickness = 0.65
+* Insulin & Glucose = 0.58
+* Pregnancies & Age = 0.54
+* BloodPressure & Age = 0.33
+* BMI & BloodPressure = 0.29
+
