@@ -48,3 +48,67 @@ Attribute Domain
   A. Mitoses 1 - 10
   B. Class: (2 for benign, 4 for malignant)
   
+  
+```{r}
+str(df)
+```
+  
+```{r}
+#Change bare_nuclei to int
+df$bare_nuclei <- as.integer(df$bare_nuclei)
+
+#Change class to factor
+df$class = factor(df$class,
+                  levels = c(2, 4),
+                  label = c(0, 1))
+
+str(df)
+```
+  
+```{r}
+nrow(df)
+ncol(df)
+```
+
+```{r}
+table(df$bare_nuclei)
+```
+
+```{r}
+df = subset(df,
+            df$bare_nuclei != "?")
+
+table(df$bare_nuclei)
+```
+
+```{r}
+str(df)
+
+sum(is.na(df))
+```
+
+```{r}
+df = df[ , -1]
+str(df)
+```
+  
+```{r}
+summary(df)
+```
+
+```{r}
+missmap(df,
+        main = "Missing Map",
+        col = c("blue",
+                "red"))
+```
+
+```{r}
+ggpairs(df)
+```
+
+```{r}
+#Check how many in each class
+table(df$class)
+```
+
