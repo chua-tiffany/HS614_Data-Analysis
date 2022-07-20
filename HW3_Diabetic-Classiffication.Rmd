@@ -89,3 +89,25 @@ nrow(diab)
 ncol(diab)
 ```
 
+## Missing & Strange Variables
+```{r Missing/NA}
+sum(is.na(diab))
+missmap(diab)
+
+#Note: While there are no NA variables, missing data points seem to have been replaced with a value of 0 in columns
+```
+Note: While there are no NA variables, missing data points seem to have been replaced with a value of 0 in columns.
+
+```{r Rows with Value 0 per Column}
+sum(diab$Glucose == 0)
+sum(diab$BloodPressure == 0)
+sum(diab$SkinThickness == 0)
+sum(diab$Insulin == 0)
+sum(diab$BMI == 0)
+sum(diab$DiabetesPedigreeFunction == 0)
+sum(diab$Age == 0)
+
+#Strange Values:
+#The following columns returned values of 0 Glucose, BloodPressure, SkinThickness, Insulin, and BMI; It is likely that missing/NA variables for these columns were replaced with 0, as 0 is a highly unlikely and unrealistic observation for these features
+```
+
