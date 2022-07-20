@@ -1,0 +1,31 @@
+---
+title: "HS614 HW#3"
+author: "Tiffany Chua"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r Working Directory}
+getwd()
+```
+
+# HS614: Homework #3
+For this HW use the diabetes dataset.
+
+Exploratory Data Analysis:
+1. Explore the data
+2. How many rows and columns?
+3. Any NAs? If yes, which columns?
+4. Any strange values? If yes, what to do?
+5. Any correlation between features?
+6. Statistics of the columns and some exploratory plots (bar plot, histogram, boxplot ...)
+
+Build at least 4 different predictive models that can predict (classify) Diabetic patients. Compare the performance of the models.
+
+Column definitions of this dataset are given in table 1 of this paper: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8306487/
+
+***
+
