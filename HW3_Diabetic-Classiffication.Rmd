@@ -326,3 +326,42 @@ nrow(diab.train)
 ncol(diab.train)
 ```
 
+```{r Train/Test NA Check}
+sum(is.na(diab.train))
+sum(is.na(diab.test))
+```
+
+```{r Train Mean Imputation}
+diab.train$Glucose[is.na(diab.train$Glucose)] <- mean(diab.train$Glucose,
+                                          na.rm = TRUE)
+diab.train$BloodPressure[is.na(diab.train$BloodPressure)] <- mean(diab.train$BloodPressure,
+                                                      na.rm = TRUE)
+diab.train$SkinThickness[is.na(diab.train$SkinThickness)] <- mean(diab.train$SkinThickness,
+                                                      na.rm = TRUE)
+diab.train$Insulin[is.na(diab.train$Insulin)] <- mean(diab.train$Insulin,
+                                          na.rm = TRUE)
+diab.train$BMI[is.na(diab.train$BMI)] <- mean(diab.train$BMI,
+                                  na.rm = TRUE)
+
+sum(is.na(diab.train))
+
+str(diab.train)
+```
+
+```{r Test Mean Imputation}
+diab.test$Glucose[is.na(diab.test$Glucose)] <- mean(diab.train$Glucose,
+                                          na.rm = TRUE)
+diab.test$BloodPressure[is.na(diab.test$BloodPressure)] <- mean(diab.train$BloodPressure,
+                                                      na.rm = TRUE)
+diab.test$SkinThickness[is.na(diab.test$SkinThickness)] <- mean(diab.train$SkinThickness,
+                                                      na.rm = TRUE)
+diab.test$Insulin[is.na(diab.test$Insulin)] <- mean(diab.train$Insulin,
+                                          na.rm = TRUE)
+diab.test$BMI[is.na(diab.test$BMI)] <- mean(diab.train$BMI,
+                                  na.rm = TRUE)
+
+sum(is.na(diab.test))
+
+head(diab.test)
+```
+
