@@ -83,3 +83,9 @@ str(diab)
 table(diab$Outcome)
 ```
 
+## Rows & Columns
+```{r}
+nrow(diab)
+ncol(diab)
+```
+
