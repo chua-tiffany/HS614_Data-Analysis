@@ -136,3 +136,12 @@ What to do with the strange variables?
 
 *** 
 
+# Exploratory Data Analysis
+
+## Initial Read
+### Descriptive Statistics
+```{r Descriptive Statistics}
+stat.desc(diab1)
+summary(diab1)
+```
+
