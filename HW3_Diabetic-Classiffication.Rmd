@@ -586,3 +586,42 @@ text(tree,
 prp(tree)
 ```
 
+### Random Forest
+```{r Random Forest}
+RF <- randomForest(formula = Outcome ~ .,
+                   method='class',
+                   data = diab.train)
+RF
+```
+
+```{r Importance}
+importance(RF)
+#MeanDecreaseGini --> Importance (IncNodePurity)
+```
+
+```{r}
+diab.test1 <- diab.test[-9]
+head(diab.test1)
+```
+
+#### Random Forest Probabilities
+```{r RF Prob}
+y_prob = predict(RF,
+                 newdata = diab.test1,
+                 type="prob")
+
+head(y_prob)
+```
+
+#### Random Forest Prediction
+```{r RF Pred}
+# Predicting the Test set results
+y_pred = predict(RF,
+                 newdata = diab.test)
+```
+
+```{r RF Confusion Matrix}
+confusionMatrix(diab.test[ , 9],
+                y_pred)
+```
+
