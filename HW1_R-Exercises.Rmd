@@ -59,3 +59,20 @@ get_min(v)
 #  missing value where TRUE/FALSE needed
 ```
 
+3. Create a function called "get_even_odd" that accepts an integer and will tell you if it is odd or even.
+```{r 3. get_even_odd}
+get_even_odd <- function(x){
+  if (x%%2 == 0) {
+    print("Even")
+  }
+  
+  else {
+    print("Odd")
+  }
+}
+
+#Example"
+get_even_odd(-3)
+get_even_odd(6)
+```
+
